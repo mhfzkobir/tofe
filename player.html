@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📺 Streaming Player</h1>
+
+  <div class="player-container">
+    <video id="video-player" controls autoplay style="aspect-ratio: 16/9; width: 100%;"></video>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const streamUrl = urlParams.get('url');
+    const videoPlayer = document.getElementById('video-player');
+
+    const customOrigin = "https://bldcmprod-cdn.toffeelive.com";
+    const customUserAgent = "Toffee (Linux;Android 14) AndroidXMedia3/1.1.1/64103898/4d2ec9b8c7534adc";
+
+    if (streamUrl) {
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+
+        // Load HLS stream and attach custom headers
+        hls.loadSource(streamUrl);
+        hls.attachMedia(videoPlayer);
+
+        hls.config.xhrSetup = function (xhr) {
+          xhr.withCredentials = true;
+          xhr.setRequestHeader('Origin', customOrigin);
+          xhr.setRequestHeader('User-Agent', customUserAgent);
+        };
+
+        hls.on(Hls.Events.ERROR, (event, data) => {
+          console.error("HLS Error:", data);
+        });
+      } else {
+        // Fallback for native browser support
+        videoPlayer.src = streamUrl;
+        videoPlayer.setAttribute("crossorigin", "use-credentials");
+      }
+    } else {
+      alert("No valid stream URL provided.");
+    }
+  </script>
+</body>
+</html>
