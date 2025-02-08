@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+.channel-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  outline: none;
+}
+
+.channel-item {
+  width: 200px;
+  height: 200px;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.channel-item img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.channel-item:hover {
+  background-color: #444;
+}
+
+.player-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
