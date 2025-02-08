@@ -10,10 +10,9 @@ body {
 .channel-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
   margin-top: 20px;
-  outline: none;
 }
 
 .channel-item {
@@ -26,21 +25,17 @@ body {
   justify-content: center;
   text-align: center;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .channel-item img {
   width: 100px;
-  height: auto;
+  height: 100px;
   margin-bottom: 10px;
 }
 
 .channel-item:hover {
   background-color: #444;
-}
-
-.player-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
 }
